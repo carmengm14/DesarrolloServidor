@@ -1,4 +1,4 @@
 <?php
-    $a = 1;
-    $b = 2;
+    $nombre = $_GET['nombre'] ?? 'Victor';
+    echo $nombre;
 ?>
