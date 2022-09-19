@@ -72,4 +72,14 @@
     $numeros = array('1', '5', '14', '19' );
     echo array_sum($numeros);
     
+
+    echo '<hola>';
+    /**Escribe un script en PHP que muestre un array de colores como una lista desordenada. */
+    $colores = array('blanco', 'verde', 'rojo');
+    echo "hola";
+    foreach ($colores as $color) {
+        echo "<ul>";
+        echo "<li>", $color , "</li>";  
+        echo "</ul>";
+    }
 ?>
