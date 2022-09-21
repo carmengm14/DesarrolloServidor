@@ -181,9 +181,7 @@
     Por ejemplo, chr(rand(65, 90)); devuelve un carácter en mayúscula (ver tabla ASCII) */
 
     function rand_Pass($upper = 1, $lower = 5, $numeric = 3, $other = 2){
-        foreach ($upper as $key) {
-            chr(rand(65, 90)); 
-        }
+        chr(rand(65, 90)); 
     }
 
 ?>
