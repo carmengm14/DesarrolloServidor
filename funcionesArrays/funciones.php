@@ -129,15 +129,35 @@
     /** A partir de una cadena con las temperaturas de un mes, realiza la media e imprime las 5 temperaturas mínimas y las 5 máximas. Funciones a utilizar: 
      * explode — Divide un string en varios string
      * count — Cuenta todos los elementos de un array print_r — Imprime información legible para humanos sobre una variable  */
-    $temperaturas = [21, 32, 17, 14, 20, 25, 19, 39, 8, 16];
-    $cadena1 = implode(" ",$temperaturas);
-    explode(" ", $cadena1);
-    echo count($temperaturas);
-    
-    $temperaturaBAJA = 0;
-    $temperaturaALTA = 0; 
-    
+    $temperaturas = "32 21 16 19 38 8 7 17 25 23";
 
+    $temperaturasMes = explode(" ", $temperaturas);
+    $temMedia = array_sum($temperaturasMes) / count($temperaturasMes);
+    
+    $temperaturasOrdenadas = $temperaturasMes;
+    asort($temperaturasOrdenadas);
+    $temDes = $temperaturasMes;
+    arsort($temDes);
+    
+    echo("Todas las temperaturas: ");
+    foreach($temperaturasMes as $temperatura){
+        echo "$temperatura ";
+    }
+    echo '<br>';
+    echo "Temperaturas max: ";
+    print_r(array_slice($temDes, 0, 5));
+    
+    echo '<br>';
+    echo "Temperaturas min: ";
+    for($i=0; $i < 5; $i++){
+        echo "$temperaturasOrdenadas[$i] ";
+    }
+    
+    echo '<br>';
+    echo "Temperatura media: $temMedia";
+
+    
+    echo '<br>';
     echo '<br>';
     /**Tenemos un array asociativo con nombre => descripción Realiza un script php que ordene el array por la longitud de la descripción.
     Funciones a utilizar: uasort — Ordena un array con una función de comparación definida por el usuario y mantiene la asociación de índices */
@@ -152,4 +172,18 @@
     $descripciones = ["Carmen" => "Persona del mundo", "Maria" => "Gymbro de confianza, esta fuerte  es divertida, buena acompañante para sesiones de musculacion", "Marta" => "Jugadora de futbol, es medio-centro tiene buen toque de balon y vision de juego"];
     uasort($descripciones, 'orden');
     print_r($descripciones);
+
+    
+    echo '<br>';
+    /**Crea una función que genere un password aleatorio. La función tiene como parámetros los siguientes:
+    function rand_Pass($upper = 1, $lower = 5, $numeric = 3, $other = 2)
+    Funciones a utilizar: chr — Devuelve un caracter específico rand — Genera un número entero aleatorio shuffle — Mezcla un array
+    Por ejemplo, chr(rand(65, 90)); devuelve un carácter en mayúscula (ver tabla ASCII) */
+
+    function rand_Pass($upper = 1, $lower = 5, $numeric = 3, $other = 2){
+        foreach ($upper as $key) {
+            chr(rand(65, 90)); 
+        }
+    }
+
 ?>
