@@ -73,7 +73,7 @@
     echo array_sum($numeros);
     
 
-    echo '<hola>';
+    echo '<br>';
     /**Escribe un script en PHP que muestre un array de colores como una lista desordenada. */
     $colores = array('blanco', 'verde', 'rojo');
 
@@ -82,4 +82,62 @@
         echo "<li>", $color , "</li>";  
         echo "</ul>";
     }
+
+
+    echo'<br>';
+    /**Escribe un script en PHP que muestre un array de colores como una lista desordenada y con un enlace a la página indicada en el valor. */
+
+    $colorines = array("blanco"=>"blanco.html", "verde" => "verde.html", "rojo" => "rojo.html");
+
+    foreach ($colorines as $color1 => $indice) {
+        echo "<ul>";
+            echo "<li>","<a href='$indice'>$color1</a>", "</li>";   
+        echo "</ul>";
+    }
+
+
+    echo '<br>';
+    /** Escribe un script PHP para ordenar un array asociativo. Por ejemplo:
+     * Ordenado por Nombre, ascendente
+     * Ordenado por Edad, ascendente
+     * Ordenado por Nombre, descendente
+     * Ordenado por Edad, descendente
+    */
+    $edades = array("Juan"=>"31","María"=>"41","Andrés"=>"39","Berta"=>"40");
+
+    $edadesOrdenadas = $edades;
+    ksort($edadesOrdenadas);
+    print_r($edadesOrdenadas);
+
+    echo'<br>';
+
+    asort($edadesOrdenadas);
+    print_r($edadesOrdenadas);
+
+    echo'<br>';
+    krsort($edadesOrdenadas);
+    print_r($edadesOrdenadas);
+
+    echo'<br>';
+
+    arsort($edadesOrdenadas);
+    print_r($edadesOrdenadas);
+
+
+    echo '<br>';
+    echo '<br>';
+    /** A partir de una cadena con las temperaturas de un mes, realiza la media e imprime las 5 temperaturas mínimas y las 5 máximas. Funciones a utilizar: 
+     * explode — Divide un string en varios string
+     * count — Cuenta todos los elementos de un array print_r — Imprime información legible para humanos sobre una variable  */
+    $temperaturas = [21, 32, 17, 14, 20, 25, 19, 39, 8, 16];
+    $cadena1 = implode(" ",$temperaturas);
+    explode(" ", $cadena1);
+    echo count($temperaturas);
+    
+    $temperaturaBAJA = 0;
+    $temperaturaALTA = 0; 
+    
+
+
+
 ?>
