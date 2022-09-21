@@ -138,6 +138,18 @@
     $temperaturaALTA = 0; 
     
 
+    echo '<br>';
+    /**Tenemos un array asociativo con nombre => descripción Realiza un script php que ordene el array por la longitud de la descripción.
+    Funciones a utilizar: uasort — Ordena un array con una función de comparación definida por el usuario y mantiene la asociación de índices */
 
+    function orden($a, $b){
+        if (strlen($a) == strlen($b)) {
+            return 0;
+        }
+        return (strlen($a) > strlen($b)) ? -1 : 1;
+    }
 
+    $descripciones = ["Carmen" => "Persona del mundo", "Maria" => "Gymbro de confianza, esta fuerte  es divertida, buena acompañante para sesiones de musculacion", "Marta" => "Jugadora de futbol, es medio-centro tiene buen toque de balon y vision de juego"];
+    uasort($descripciones, 'orden');
+    print_r($descripciones);
 ?>
