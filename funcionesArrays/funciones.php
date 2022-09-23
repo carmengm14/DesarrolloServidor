@@ -219,4 +219,10 @@
    echo " <br> minimo: ";
    print(min($strlen));
    
+
+   echo "<br><br>";
+   /** Escribe función partlist que devuelva todas las formas de dividir una lista (array) de al menos dos elementos en dos partes no vacías que contengan todos los elementos.
+    * Cada dos partes no vacías estarán en un par. Cada parte estará en una cadena. Los elementos de un par deben estar en el mismo orden que en el array original
+    
+ */
 ?>
