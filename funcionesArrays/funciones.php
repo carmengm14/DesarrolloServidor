@@ -181,7 +181,42 @@
     Por ejemplo, chr(rand(65, 90)); devuelve un carácter en mayúscula (ver tabla ASCII) */
 
     function rand_Pass($upper = 1, $lower = 5, $numeric = 3, $other = 2){
-        chr(rand(65, 90)); 
-    }
+        $pass = [];
 
+        for ($i=0; $i < $numeric; $i++) { 
+            $aleatorio = chr(rand(48,57));
+            $pass[] = $aleatorio;
+        }
+        for ($i=0; $i < $upper; $i++) { 
+            $mayuscula = chr(rand(65, 90)); 
+            $pass[] = $mayuscula;
+        }
+        for ($i=0; $i < $lower; $i++) { 
+            $minuscula = chr(rand(97, 122)); 
+            $pass[] =  $minuscula;
+        }
+        for ($i=0; $i < $other; $i++) { 
+            $otroscaracteres = chr(rand(33, 47)); 
+            $pass[] = $otroscaracteres;
+        }
+        shuffle($pass);
+        return implode($pass);
+    }
+    
+   print_r("<br>Contraseña: " . rand_Pass());
+
+
+   echo '<br><br>';
+   /**Escribe un script php que calcule la longitud máxima y mínima de las cadenas de un array. Funciones a utilizar: array_map — Aplica un callback a los elementos de los arrays dados max — Encontrar el valor más alto min — Encontrar el valor más bajo  */
+
+   $array = ["hola", "buenos dias", "h"];
+   $strlen = array_map("strlen",$array);
+   echo "palabras: ";
+   print_r(implode(", ", $array));
+
+   echo " <br> maximo: ";
+   print(max($strlen));
+   echo " <br> minimo: ";
+   print(min($strlen));
+   
 ?>
