@@ -223,6 +223,17 @@
    echo "<br><br>";
    /** Escribe función partlist que devuelva todas las formas de dividir una lista (array) de al menos dos elementos en dos partes no vacías que contengan todos los elementos.
     * Cada dos partes no vacías estarán en un par. Cada parte estará en una cadena. Los elementos de un par deben estar en el mismo orden que en el array original
-    
  */
+    function partList($arrayy){
+        $iterador = 0;
+        for ($i= 0; $i < (count($arrayy)-1); $i++) {
+           $resultadooo[$i][$iterador] =  implode(" ",array_slice($arrayy, 0, $i+1));    
+           $iterador++;
+           $resultadooo[$i][$iterador] =  implode(" ",array_slice($arrayy, $i+1));           
+           $iterador++;
+        }
+        return $resultadooo;
+    }
+    $frases = ["Seguro", "que", "apruebo", "esta", "asignatura"];
+    print_r(partList($frases));
 ?>
