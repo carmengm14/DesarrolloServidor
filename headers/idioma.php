@@ -5,9 +5,9 @@ echo $idioma;
 if ($comparacion = str_contains($idioma,"es")) {
     $content = "Esta página está en Castellano (Idioma por defecto)";
     $title = "Cambiar el idioma de la página";
-}else if($comparacion = str_contains($idioma,"en")){
+}else {
     $content = "This page is in English";
-        $title = "Change the language of the page";
+    $title = "Change the language of the page";
 }
 ?>
 <!doctype html>
