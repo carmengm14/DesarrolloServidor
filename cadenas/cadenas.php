@@ -43,11 +43,9 @@
     /**Muestra el número de veces que aparece la letra a (mayúscula o minúscula) en el parámetro nombre
     (funciones substr_count + ( strtoupper o strtolower )). */
     
-    $contador = 0;
-    $contamosmin = substr_count($nombre, 'a');
-    $contamosmay = substr_count($nombre, 'A');
-    $total = $contamosmay + $contamosmin;
-    echo "Hay un total de '$total', a en el nombre";
+    $nom = strtolower($nombre);
+    $contador= substr_count($nom, 'a');
+    echo "Hay un total de '$contador', a en el nombre";
 
     echo '<br>';
 
