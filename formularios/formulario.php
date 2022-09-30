@@ -10,7 +10,6 @@
     Hola <?php echo $_POST["nombre"]; ?><br>
     Tu email es: <?php echo $_POST["email"]; ?><br>
     Tu Educacion es: <?php echo $_POST["educacion"]; ?><br>
-    
     <?php
     $directorioSubido = "imagenes-descargadas/";
     $max_file_size = "51200";
