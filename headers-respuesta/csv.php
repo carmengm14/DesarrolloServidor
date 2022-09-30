@@ -5,7 +5,7 @@ $productos = ["1" => "Producto 1",
 
 
 header('Content-Type: text/csv');
-header('Content-Disposition: attachment; filename = "download.csv"');
+header('Content-Disposition: attachment; filename = "productos.csv"');
 foreach($productos as $key => $value){ 
     echo $key . " = " .$value . "\n";
 }
