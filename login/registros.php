@@ -40,9 +40,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $email = $_POST['email'] ?? "";
     $passwd = $_POST['passwd'] ?? "";
 
-    $existe = $pdo->query("SELECT username FROM usuarios WHERE username = '$username' AND passwd = '$passwd'");
+    $existe = $pdo->query("SELECT username FROM usuarios WHERE username = '$username' AND passwd = '$passwd'") -> fetch();
 
-    if ( $existe === false) {
+    if ($existe === false) {
         $consulta = $pdo->exec("INSERT INTO usuarios (username,email,passwd) VALUES ('$username','$email','$passwd')");
         echo("<br>" . "USER CREADO");
     }else{

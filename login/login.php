@@ -43,9 +43,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     //Si existe el usuario
     if ($registro = $consulta -> fetch()) {
         $_SESSION['username'] = $registro['username'];
-        echo("TE HAS LOGEADO");
+        echo( "<br>" . "TE HAS LOGEADO");
     }else{
-        echo("ERES FEKA");
+        echo("<br>" . "ERES FEKA");
     }
 }
 ?>
