@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Contacto;
 use App\Entity\Provincia;
+use App\Form\ContactoType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,25 +28,31 @@ class ContactoController extends AbstractController
     /**
      * @Route("/contacto/nuevo", name="nuevo_contacto")
      */
-    public function nuevo(ManagerRegistry $doctrine, Request $request){
+    public function nuevo(ManagerRegistry $doctrine, Request $request) {
         $contacto = new Contacto();
+        $formulario = $this->createForm(ContactoType::class, $contacto);
+        $formulario->handleRequest($request);
+        if ($formulario->isSubmitted() && $formulario->isValid()) {
+            $contacto = $formulario->getData();
+            $entityManager = $doctrine->getManager();
+            $entityManager->persist($contacto);
+            $entityManager->flush();
+            return $this->redirectToRoute('fichacontacto', ["codigo" => $contacto->getId()]);
+        }
+        return $this->render('nuevo.html.twig', array(
+            'formulario' => $formulario->createView()
+        ));
+    }
 
-        $formulario = $this->createFormBuilder($contacto)
-            ->add('nombre', TextType::class)
+    /**
+    * @Route("/contacto/editar/{codigo}", name="editar_contacto",requirements={"codigo"="\d+"})
+    */
 
-            ->add('telefono', TextType::class)
-
-            ->add('email', EmailType::class, array('label' => 'Correo electrónico '))
-
-            ->add('provincia', EntityType::class, array(
-
-                'class' => Provincia::class,
-
-                'choice_label' => 'nombre',))
-
-            ->add('save', SubmitType::class, array('label' => 'Enviar'))
-            ->getForm();
-
+    public function editar(ManagerRegistry $doctrine, Request $request, $codigo) {
+        $repositorio = $doctrine->getRepository(Contacto::class);
+        $contacto = $repositorio->find($codigo);
+        if ($contacto){
+            $formulario = $this->createForm(ContactoType::class, $contacto);
             $formulario->handleRequest($request);
 
             if ($formulario->isSubmitted() && $formulario->isValid()) {
@@ -53,13 +60,17 @@ class ContactoController extends AbstractController
                 $entityManager = $doctrine->getManager();
                 $entityManager->persist($contacto);
                 $entityManager->flush();
-                return $this->redirectToRoute('fichacontacto',["codigo" => $contacto->getId()]);
+                return $this->redirectToRoute('fichacontacto', ["codigo" => $contacto->getId()]);
             }
-
-        return $this->render('nuevo.html.twig', array('formulario' => $formulario-> createView()));
-
+            return $this->render('nuevo.html.twig', array(
+                'formulario' => $formulario->createView()
+            ));
+        }else{
+            return $this->render('fichacontacto.html.twig', [
+                'contacto' => NULL
+            ]);
+        }
     }
-
 
     /**
     * @Route("/contacto/{codigo<\d+>?1}", name="fichacontacto")
