@@ -1,0 +1,156 @@
+<?php
+
+namespace App\Entity;
+
+use App\Repository\ClientesRepository;
+use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Mapping as ORM;
+
+#[ORM\Entity(repositoryClass: ClientesRepository::class)]
+class Clientes
+{
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
+
+    #[ORM\Column]
+    private ?int $n_socio = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $nombre = null;
+
+    #[ORM\Column(length: 100)]
+    private ?string $apellidos = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $email = null;
+
+    #[ORM\Column(length: 9)]
+    private ?string $telefono = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $f_nacimiento = null;
+
+    #[ORM\Column(length: 9)]
+    private ?string $dni = null;
+
+    #[ORM\Column(length: 20)]
+    private ?string $n_cuenta = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $id_tarifa = null;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getNSocio(): ?int
+    {
+        return $this->n_socio;
+    }
+
+    public function setNSocio(int $n_socio): self
+    {
+        $this->n_socio = $n_socio;
+
+        return $this;
+    }
+
+    public function getNombre(): ?string
+    {
+        return $this->nombre;
+    }
+
+    public function setNombre(string $nombre): self
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    public function getApellidos(): ?string
+    {
+        return $this->apellidos;
+    }
+
+    public function setApellidos(string $apellidos): self
+    {
+        $this->apellidos = $apellidos;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getTelefono(): ?string
+    {
+        return $this->telefono;
+    }
+
+    public function setTelefono(string $telefono): self
+    {
+        $this->telefono = $telefono;
+
+        return $this;
+    }
+
+    public function getFNacimiento(): ?\DateTimeInterface
+    {
+        return $this->f_nacimiento;
+    }
+
+    public function setFNacimiento(\DateTimeInterface $f_nacimiento): self
+    {
+        $this->f_nacimiento = $f_nacimiento;
+
+        return $this;
+    }
+
+    public function getDni(): ?string
+    {
+        return $this->dni;
+    }
+
+    public function setDni(string $dni): self
+    {
+        $this->dni = $dni;
+
+        return $this;
+    }
+
+    public function getNCuenta(): ?string
+    {
+        return $this->n_cuenta;
+    }
+
+    public function setNCuenta(string $n_cuenta): self
+    {
+        $this->n_cuenta = $n_cuenta;
+
+        return $this;
+    }
+
+    public function getIdTarifa(): ?string
+    {
+        return $this->id_tarifa;
+    }
+
+    public function setIdTarifa(string $id_tarifa): self
+    {
+        $this->id_tarifa = $id_tarifa;
+
+        return $this;
+    }
+}

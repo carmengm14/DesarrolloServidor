@@ -13,6 +13,6 @@ class PageController extends AbstractController
      */
     public function inicio(): Response
     {
-        return new Response("Hola bienvenido");
+        return $this -> render('inicio.html.twig');
     }
 }

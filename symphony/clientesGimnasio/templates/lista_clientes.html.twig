@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block title %}Clientes{% endblock %}
+{% block body %}
+    <h1>Listado de clientes</h1><hr>
+    {% if clientes %}
+        {% for cliente in clientes %}
+                {{include ('partials/datos_clientes.html.twig', {'cliente': cliente})}}
+        <hr>
+        {% endfor %}
+    {% else %}
+        <p>Clientes no encontrados</p>
+    {% endif %}
+{% endblock %}

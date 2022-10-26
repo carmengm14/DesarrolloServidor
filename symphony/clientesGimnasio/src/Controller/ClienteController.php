@@ -15,6 +15,8 @@ class ClienteController extends AbstractController
 
         2 => ["nombre" => "Maria", "apellidos" => "Fernandez Jimenez" , "email" => "mariaf@ieselcaminas.org", "telefono" => "524142432", "f_nacimiento" => "2003-08-22", "dni" => "15789840G", "n_cuenta" => "ES385785995598757578", "id_tarifa" => "jovenes"] ,
 
+        3 => ["nombre" => "Marta", "apellidos" => "Fernandez Jimenez" , "email" => "martaf@ieselcaminas.org", "telefono" => "524142572", "f_nacimiento" => "2003-08-22", "dni" => "16889840G", "n_cuenta" => "ES385785995598757578", "id_tarifa" => "jovenes"] ,
+
         5 => ["nombre" => "Elena", "apellidos" => "Miralles Monreal" , "email" => "elenamp@ieselcaminas.org", "telefono" => "627142432", "f_nacimiento" => "1965-10-02", "dni" => "20478598N", "n_cuenta" => "ES355785985598728578", "id_tarifa" => "adultos"] ,
 
         9 => ["nombre" => "Juan", "apellidos" => "Pallarés Felicidad" , "email" => "juanp@ieselcaminas.org", "telefono" => "824172432", "f_nacimiento" => "2003-10-02", "dni" => "20478596N", "n_cuenta" => "ES355785985598728578", "id_tarifa" => "jovenes"] 
@@ -23,55 +25,30 @@ class ClienteController extends AbstractController
 
 
     /**
-     * @Route("/cliente/{codigo}", name = "ficha_cliente")
+     * @Route("/clientes/{codigo<\d+>?1}", name = "ficha_cliente")
      */
     //VER FICHA DE UN CLIENTE COMPLETA
     public function ficha_cliente($codigo){
         $resultado = ($this -> clientes[$codigo] ?? null);
-        if ($resultado){
-            $html = "<ul>";
-                $html .= "<p>" . "ID CLIENTE = <strong>".$codigo . "</strong></p>";
-                $html .= "<li><strong>" . "NOMBRE = </strong>" .$resultado['nombre'] . " " .$resultado['apellidos'] . "</li>";
-                $html .= "<li><strong>" . "EMAIL = </strong>" . $resultado['email'] . "</li>";
-                $html .= "<li><strong>" . "TELÉFONO = </strong>" . $resultado['telefono'] . "</li>";
-                $html .= "<li><strong>" . "FECHA DE NACIMIENTO = </strong>" . $resultado['f_nacimiento'] . "</li>";
-                $html .= "<li><strong>" . "DNI = </strong>" . $resultado['dni'] . "</li>";
-                $html .= "<li><strong>" . "NÚMERO DE CUENTA = </strong>" . $resultado['n_cuenta'] . "</li>";
-                $html .= "<li><strong>" . "TIPO DE TARIFA = </strong>" . $resultado['id_tarifa'] . "</li>";
-                $html .= "</ul>";
-                return new Response("<html><body>$html</body>");
-        }else{
-            return new Response("<html><body> Contacto $codigo no encontrado");
-        }
+        return $this -> render('ficha_clientes.html.twig', ['cliente' => $resultado]);
     }
 
     //ESTE APARTADO SERÁ SOLO PARA LOS TRABAJADORES, YA QUE AL BUSCAR UN CLIENTE PODRÁN ENCONTRAR SUS DATOS MUCHO MÁS RÁPIDO
 
     /**
-     * @Route("/clientes/buscar/{texto}", name = "buscar_cliente")
+     * @Route("/clientes/buscar/{nombre}/{ape}", name = "buscar_cliente")
      */
 
-     public function buscar($texto): Response{
-        $resultados = array_filter($this->clientes, function($cliente) use($texto){
-            return strpos($cliente["nombre"], $texto) !== FALSE;
+     public function buscar($nombre, $ape): Response{
+        $resultados = array_filter($this->clientes, function($cliente) use($nombre, $ape){
+            if (strpos($cliente["nombre"], $nombre) !== FALSE){
+                return (strpos($cliente["apellidos"], $ape) !== FALSE);
+            }else{
+             return false;
+            }
         });
         
-        if (count($resultados)) {
-            $html = "<ul>";
-            foreach($resultados as $id => $resultado){
-                $html .= "<p>" . "ID CLIENTE = <strong>". $id . "</strong></p>";
-                $html .= "<li><strong>" . "NOMBRE = </strong>" .$resultado['nombre'] . " " .$resultado['apellidos'] . "</li>";
-                $html .= "<li><strong>" . "EMAIL = </strong>" . $resultado['email'] . "</li>";
-                $html .= "<li><strong>" . "TELÉFONO = </strong>" . $resultado['telefono'] . "</li>";
-                $html .= "<li><strong>" . "FECHA DE NACIMIENTO = </strong>" . $resultado['f_nacimiento'] . "</li>";
-                $html .= "<li><strong>" . "DNI = </strong>" . $resultado['dni'] . "</li>";
-                $html .= "<li><strong>" . "NÚMERO DE CUENTA = </strong>" . $resultado['n_cuenta'] . "</li>";
-                $html .= "<li><strong>" . "TIPO DE TARIFA = </strong>" . $resultado['id_tarifa'] . "</li>";
-                $html .= "</ul>";
-                return new Response("<html><body>$html</body>");
-        }}
-        else{
-            return new Response("<html><body> Contacto no encontrado");
+        return $this ->render('lista_clientes.html.twig', ['clientes' => $resultados]);
         }
-            }
-        }
+    }
+    

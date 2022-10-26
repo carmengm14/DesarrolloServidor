@@ -1,0 +1,15 @@
+body{
+    background-color: #3b3b88;
+    color: white;
+    margin: 20px;
+}
+h1{
+    border-bottom: 1px solid #ff9a00;
+}
+hr{
+    color:#ff9a00;
+}
+ul{
+    background-color: rgba(128, 128, 128,0.4);
+    padding: 25px;
+}
