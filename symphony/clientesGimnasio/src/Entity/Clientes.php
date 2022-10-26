@@ -14,9 +14,6 @@ class Clientes
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $n_socio = null;
-
     #[ORM\Column(length: 50)]
     private ?string $nombre = null;
 
@@ -46,17 +43,6 @@ class Clientes
         return $this->id;
     }
 
-    public function getNSocio(): ?int
-    {
-        return $this->n_socio;
-    }
-
-    public function setNSocio(int $n_socio): self
-    {
-        $this->n_socio = $n_socio;
-
-        return $this;
-    }
 
     public function getNombre(): ?string
     {

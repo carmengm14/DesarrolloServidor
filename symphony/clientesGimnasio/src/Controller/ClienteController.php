@@ -6,10 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Test\Constraint\ResponseFormatSame;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Clientes;
+use Doctrine\Persistence\ManagerRegistry;
 
 class ClienteController extends AbstractController
 {
-    private $clientes = [
+    /*private $clientes = [
 
         1 => ["nombre" => "Carmen", "apellidos" => "García Monreal" , "email" => "carmeng@ieselcaminas.org", "telefono" => "601756498", "f_nacimiento" => "2003-10-02", "dni" => "20478596N", "n_cuenta" => "ES355785985598728578", "id_tarifa" => "jovenes"] ,
 
@@ -21,16 +23,44 @@ class ClienteController extends AbstractController
 
         9 => ["nombre" => "Juan", "apellidos" => "Pallarés Felicidad" , "email" => "juanp@ieselcaminas.org", "telefono" => "824172432", "f_nacimiento" => "2003-10-02", "dni" => "20478596N", "n_cuenta" => "ES355785985598728578", "id_tarifa" => "jovenes"] 
 
-    ];     
+    ];     */
+
+//ESTA APARTADO ES PARA INSERTAR CLIENTES EN EL GIMNASIO 
+/**
+ * @Route("/clientes/insertar", name="insertar_cliente")
+ */
+public function insertar_cliente(ManagerRegistry $doctrine){
+    $entityManager = $doctrine-> getManager();
+    foreach($this->clientes as $c){
+        $cliente = new Clientes();
+        $cliente-> setNombre($c["nombre"]);
+        $cliente-> setApellidos($c["apellidos"]);
+        $cliente-> setEmail($c["email"]);
+        $cliente-> setTelefono($c["telefono"]);
+        $cliente-> setFNacimiento(new \DateTime($c["f_nacimiento"]));
+        $cliente-> setDni($c["dni"]);
+        $cliente-> setNCuenta($c["n_cuenta"]);
+        $cliente-> setIdTarifa($c["id_tarifa"]);
+        $entityManager->persist($cliente);
+    }
+    try{
+        $entityManager->flush();
+        return new Response("Clientes insertado correctamente");
+    }catch(\Exception $e){
+        return new Response("ERROR AL INSERTAR AL CLIENTE" ."<br>" . $e->getMessage());
+    }
+}
 
 
     /**
      * @Route("/clientes/{codigo<\d+>?1}", name = "ficha_cliente")
      */
     //VER FICHA DE UN CLIENTE COMPLETA
-    public function ficha_cliente($codigo){
-        $resultado = ($this -> clientes[$codigo] ?? null);
-        return $this -> render('ficha_clientes.html.twig', ['cliente' => $resultado]);
+    public function ficha_cliente(ManagerRegistry $doctrine, $codigo): Response{
+       $repositorio = $doctrine->getRepository(Clientes::class);
+       $cliente = $repositorio->find($codigo);
+       
+       return $this->render('ficha_clientes.html.twig', ['cliente' => $cliente]);
     }
 
     //ESTE APARTADO SERÁ SOLO PARA LOS TRABAJADORES, YA QUE AL BUSCAR UN CLIENTE PODRÁN ENCONTRAR SUS DATOS MUCHO MÁS RÁPIDO
@@ -50,5 +80,6 @@ class ClienteController extends AbstractController
         
         return $this ->render('lista_clientes.html.twig', ['clientes' => $resultados]);
         }
+
+
     }
-    
