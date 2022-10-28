@@ -59,7 +59,8 @@ public function insertar_cliente(ManagerRegistry $doctrine){
     public function ficha_cliente(ManagerRegistry $doctrine, $codigo): Response{
        $repositorio = $doctrine->getRepository(Clientes::class);
        $cliente = $repositorio->find($codigo);
-       
+       //var_dump($cliente);
+       //exit;
        return $this->render('ficha_clientes.html.twig', ['cliente' => $cliente]);
     }
 
@@ -69,17 +70,54 @@ public function insertar_cliente(ManagerRegistry $doctrine){
      * @Route("/clientes/buscar/{nombre}/{ape}", name = "buscar_cliente")
      */
 
-     public function buscar($nombre, $ape): Response{
-        $resultados = array_filter($this->clientes, function($cliente) use($nombre, $ape){
-            if (strpos($cliente["nombre"], $nombre) !== FALSE){
-                return (strpos($cliente["apellidos"], $ape) !== FALSE);
-            }else{
-             return false;
-            }
-        });
-        
-        return $this ->render('lista_clientes.html.twig', ['clientes' => $resultados]);
-        }
-
-
+     public function buscar(ManagerRegistry $doctrine,$nombre, $ape): Response{
+       $repositorio = $doctrine->getRepository(Clientes::class);
+       $clientes= $repositorio->findByNombreyApellido($nombre,$ape);
+       
+       return $this->render('lista_clientes.html.twig',['clientes' => $clientes]);
     }
+
+
+    //MODIFICAR CONTACTO, AQUI SE CAMBIARÁ EL NOMBRE DEL CLIENTE QUE LE PASEMOS EL DNI, OSEA PONEMOS EL DNI Y EL NOMBRE NUEVO.
+    /**
+     * @Route("/clientes/update/{id}/{nombre}", name= "modificar_cliente")
+     */
+    public function modificar_cliente(ManagerRegistry $doctrine, $id, $nombre): Response{
+        $entityManager = $doctrine -> getManager();
+        $repositorio = $doctrine -> getRepository(Clientes::class);
+        $cliente = $repositorio -> find($id);
+        if ($cliente) {
+            $cliente -> setNombre($nombre);
+            try {
+                $entityManager ->flush();
+                return $this -> render('ficha_clientes.html.twig', [ 'cliente' => $cliente]);
+            } catch (\Exception $e) {
+                return new Response("ERROR ACTUALIZANDO AL CLIENTE"); 
+            }
+        }else{
+            return $this -> render('ficha_clientes.html.twig', ['cliente' => null]);
+        }
+    }
+
+
+    //ELIMINAR CONTACTO, AQUI SE ELIMINARÁ EL CLIENTE QUE LE PASEMOS EL id, OSEA PONEMOS EL id Y ADIÓS.
+    /**
+     * @Route("/clientes/delete/{id}", name= "eliminar_cliente")
+     */
+    public function eliminar_cliente(ManagerRegistry $doctrine, $id): Response{
+        $entityManager = $doctrine -> getManager();
+        $repositorio = $doctrine -> getRepository(Clientes::class);
+        $cliente = $repositorio -> find($id);
+        if ($cliente) {
+            try {
+                $entityManager ->remove($cliente);
+                $entityManager ->flush();
+                return new Response('CLIENTE ELIMINADO CORRECTAMENTE');
+            } catch (\Exception $e) {
+                return new Response("ERROR ELIMINANDO AL CLIENTE"); 
+            }
+        }else{
+            return $this -> render('ficha_clientes.html.twig', ['cliente' => null]);
+        }
+    }
+}

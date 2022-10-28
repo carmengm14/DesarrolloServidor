@@ -39,6 +39,16 @@ class ClientesRepository extends ServiceEntityRepository
         }
     }
 
+
+    public function findByNombreyApellido($nombre, $apellido):array{
+        $qb = $this->createQueryBuilder('c')
+        ->andWhere('c.nombre LIKE :nombre')
+        ->andWhere('c.apellidos LIKE :apellido')
+        ->setParameter('nombre', '%' . $nombre . '%')
+        ->setParameter('apellido', '%' . $apellido . '%')
+        ->getQuery();
+        return $qb->execute();
+    }
 //    /**
 //     * @return Clientes[] Returns an array of Clientes objects
 //     */
