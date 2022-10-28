@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ClientesRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Tarifas;
 
 #[ORM\Entity(repositoryClass: ClientesRepository::class)]
 class Clientes
@@ -35,8 +36,9 @@ class Clientes
     #[ORM\Column(length: 20)]
     private ?string $n_cuenta = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $id_tarifa = null;
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Tarifas $tarifas = null;
 
     public function getId(): ?int
     {
@@ -128,14 +130,15 @@ class Clientes
         return $this;
     }
 
-    public function getIdTarifa(): ?string
+
+    public function getTarifas(): ?Tarifas
     {
-        return $this->id_tarifa;
+        return $this->tarifas;
     }
 
-    public function setIdTarifa(string $id_tarifa): self
+    public function setTarifas(?Tarifas $tarifas): self
     {
-        $this->id_tarifa = $id_tarifa;
+        $this->tarifas = $tarifas;
 
         return $this;
     }
