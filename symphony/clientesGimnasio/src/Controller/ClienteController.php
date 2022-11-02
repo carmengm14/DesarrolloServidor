@@ -4,13 +4,17 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Test\Constraint\ResponseFormatSame;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Clientes;
 use DateTime;
 use App\Entity\Tarifas;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\Validator\Constraints\Date;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class ClienteController extends AbstractController
 {
@@ -52,6 +56,38 @@ public function insertar_clienteLocal(ManagerRegistry $doctrine){
     }catch(\Exception $e){
         return new Response("ERROR AL INSERTAR AL CLIENTE" ."<br>" . $e->getMessage());
     }
+}
+
+
+
+/**
+ * @Route("/clientes/nuevo", name="nuevo_cliente")
+ */
+public function nuevo_cliente(ManagerRegistry $doctrine, Request $request){
+    $cliente = new Clientes();
+    $formulario = $this-> createFormBuilder($cliente)
+        ->  add ('nombre', TextType::class)
+        ->  add ('apellidos', TextType::class)
+        ->  add ('email', EmailType::class, array('label' => 'Correo electrónico'))
+        ->  add ('telefono', TextType::class)
+        ->  add ('f_nacimiento', DateType::class, array('label' => 'Fecha de nacimiento'))
+        ->  add ('dni', TextType::class)
+        ->  add ('n_cuenta', TextType::class, array('label' => 'IBAN'))
+        ->  add ('tarifas', EntityType::class, array(
+            'class' => Tarifas::class,
+            'choice_label' => 'tarifa',))
+        ->  add('save', SubmitType::class, array('label' => 'ENVIAR'))
+        ->  getForm();
+        $formulario -> handleRequest($request);
+        
+        if ($formulario ->isSubmitted() && $formulario -> isValid()) {
+            $cliente = $formulario -> getData();
+            $entityManager = $doctrine -> getManager();
+            $entityManager -> persist($cliente);
+            $entityManager -> flush();
+            return $this -> redirectToRoute('ficha_clientes', ["codigo" => $cliente -> getId()]);
+        }
+        return $this -> render('nuevo.html.twig', array('formulario' => $formulario -> createView()));
 }
 
 
