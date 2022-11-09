@@ -7,13 +7,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Clientes;
-use DateTime;
+use App\Form\ClienteType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use App\Entity\Tarifas;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\ResetType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class ClienteController extends AbstractController
@@ -65,19 +66,7 @@ public function insertar_clienteLocal(ManagerRegistry $doctrine){
  */
 public function nuevo_cliente(ManagerRegistry $doctrine, Request $request){
     $cliente = new Clientes();
-    $formulario = $this-> createFormBuilder($cliente)
-        ->  add ('nombre', TextType::class)
-        ->  add ('apellidos', TextType::class)
-        ->  add ('email', EmailType::class, array('label' => 'Correo electrónico'))
-        ->  add ('telefono', TextType::class)
-        ->  add ('f_nacimiento', DateType::class, array('label' => 'Fecha de nacimiento'))
-        ->  add ('dni', TextType::class)
-        ->  add ('n_cuenta', TextType::class, array('label' => 'IBAN'))
-        ->  add ('tarifas', EntityType::class, array(
-            'class' => Tarifas::class,
-            'choice_label' => 'tarifa',))
-        ->  add('save', SubmitType::class, array('label' => 'ENVIAR'))
-        ->  getForm();
+    $formulario = $this-> createForm(ClienteType::class, $cliente);
         $formulario -> handleRequest($request);
         
         if ($formulario ->isSubmitted() && $formulario -> isValid()) {
@@ -85,7 +74,7 @@ public function nuevo_cliente(ManagerRegistry $doctrine, Request $request){
             $entityManager = $doctrine -> getManager();
             $entityManager -> persist($cliente);
             $entityManager -> flush();
-            return $this -> redirectToRoute('ficha_clientes', ["codigo" => $cliente -> getId()]);
+            return $this -> redirectToRoute('ficha_cliente', ["codigo" => $cliente -> getId()]);
         }
         return $this -> render('nuevo.html.twig', array('formulario' => $formulario -> createView()));
 }
@@ -117,7 +106,7 @@ public function nuevo_cliente(ManagerRegistry $doctrine, Request $request){
     }
 
 
-    //MODIFICAR CONTACTO, AQUI SE CAMBIARÁ EL NOMBRE DEL CLIENTE QUE LE PASEMOS EL DNI, OSEA PONEMOS EL DNI Y EL NOMBRE NUEVO.
+    //MODIFICAR Clientes, AQUI SE CAMBIARÁ EL NOMBRE DEL CLIENTE QUE LE PASEMOS EL DNI, OSEA PONEMOS EL DNI Y EL NOMBRE NUEVO.
     /**
      * @Route("/clientes/update/{id}/{nombre}", name= "modificar_cliente")
      */
@@ -138,8 +127,37 @@ public function nuevo_cliente(ManagerRegistry $doctrine, Request $request){
         }
     }
 
+    //EDITAR UN CLIENTE
+    /**
+     * @Route("/clientes/editar/{codigo}", name = "editar_cliente", requirements = {"codigo"="\d+"})
+     */
+    public function editar(ManagerRegistry $doctrine, Request $request, $codigo){
+        $repositorio = $doctrine->getRepository(Clientes::class);
+        $cliente = $repositorio->find($codigo);
 
-    //ELIMINAR CONTACTO, AQUI SE ELIMINARÁ EL CLIENTE QUE LE PASEMOS EL id, OSEA PONEMOS EL id Y ADIÓS.
+    if ($cliente){
+        $formulario = $this->createForm(ClienteType::class, $cliente);
+        $formulario->handleRequest($request);
+
+        if ($formulario->isSubmitted() && $formulario->isValid()) {
+            $cliente = $formulario->getData();
+            $entityManager = $doctrine->getManager();
+            $entityManager->persist($cliente);
+            $entityManager->flush();
+            return $this->redirectToRoute('ficha_cliente', ["codigo" => $cliente->getId()]);
+        }
+        return $this->render('editar.html.twig', array(
+            'formulario' => $formulario->createView()
+        ));
+    }else{
+        return $this->render('ficha_cliente.html.twig', [
+            'cliente' => NULL
+        ]);
+    }
+
+    }
+
+    //ELIMINAR Clientes, AQUI SE ELIMINARÁ EL CLIENTE QUE LE PASEMOS EL id, OSEA PONEMOS EL id Y ADIÓS.
     /**
      * @Route("/clientes/delete/{id}", name= "eliminar_cliente")
      */

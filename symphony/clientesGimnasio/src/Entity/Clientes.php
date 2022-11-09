@@ -6,6 +6,7 @@ use App\Repository\ClientesRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Tarifas;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ClientesRepository::class)]
 class Clientes
@@ -21,6 +22,11 @@ class Clientes
     #[ORM\Column(length: 100)]
     private ?string $apellidos = null;
 
+    /**
+    * @ORM\Column(type="string", length=255)
+    * @Assert\NotBlank()
+    * @Assert\Email(message="El email {{ value }} no es válido")
+    */
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
@@ -51,7 +57,7 @@ class Clientes
         return $this->nombre;
     }
 
-    public function setNombre(string $nombre): self
+    public function setNombre(?string $nombre): self
     {
         $this->nombre = $nombre;
 
@@ -63,7 +69,7 @@ class Clientes
         return $this->apellidos;
     }
 
-    public function setApellidos(string $apellidos): self
+    public function setApellidos(?string $apellidos): self
     {
         $this->apellidos = $apellidos;
 
@@ -75,7 +81,7 @@ class Clientes
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
 
@@ -87,7 +93,7 @@ class Clientes
         return $this->telefono;
     }
 
-    public function setTelefono(string $telefono): self
+    public function setTelefono(?string $telefono): self
     {
         $this->telefono = $telefono;
 
@@ -111,7 +117,7 @@ class Clientes
         return $this->dni;
     }
 
-    public function setDni(string $dni): self
+    public function setDni(?string $dni): self
     {
         $this->dni = $dni;
 
@@ -123,7 +129,7 @@ class Clientes
         return $this->n_cuenta;
     }
 
-    public function setNCuenta(string $n_cuenta): self
+    public function setNCuenta(?string $n_cuenta): self
     {
         $this->n_cuenta = $n_cuenta;
 
