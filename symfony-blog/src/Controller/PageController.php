@@ -27,6 +27,14 @@ class PageController extends AbstractController
         return $this->render('page/about.html.twig', []);
     }
 
+        //CONTROLADOR PAGINA THANKYOU
+        #[Route('/thankyou', name: 'thankyou')]
+        public function thankyou(): Response
+        {
+            return $this->render('page/thankyou.html.twig', []);
+        }
+    
+
     //CONTROLADOR PAGINA CONTACT
     #[Route('/contact', name: 'contact')]
     public function contact(ManagerRegistry $doctrine, Request $request): Response
@@ -39,7 +47,7 @@ class PageController extends AbstractController
             $entityManager = $doctrine->getManager();    
             $entityManager->persist($contacto);
             $entityManager->flush();
-            return $this->redirectToRoute('index', []);
+            return $this->redirectToRoute('thankyou', []);
         }
         return $this->render('page/contact.html.twig', array(
             'form' => $form->createView()    
