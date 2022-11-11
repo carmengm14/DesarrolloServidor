@@ -14,5 +14,18 @@ class PageController extends AbstractController
         return $this->render('page/index.html.twig', []);
     }
 
+    //CONTROLADOR PAGINA ABOUT
+    #[Route('/about', name: 'about')]
+    public function about(): Response
+    {
+        return $this->render('page/about.html.twig', []);
+    }
+
+    //CONTROLADOR PAGINA CONTACT
+    #[Route('/contact', name: 'about')]
+    public function about(): Response
+    {
+        return $this->render('page/about.html.twig', []);
+    }
 }
 
