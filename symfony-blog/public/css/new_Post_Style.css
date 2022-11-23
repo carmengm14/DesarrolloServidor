@@ -1,0 +1,71 @@
+.tituloNewPost{
+    color: blue;
+    text-decoration: underline;
+    text-transform: uppercase;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.form-horizontal{
+    text-align: justify;
+    display: inline-block;
+}
+label{
+    margin: 5px;
+    width: 120px;
+}
+#post_form_title{
+    display: inline-block;
+    align-content: center;
+    margin: 5px;
+}
+input[type="text"] {
+    width: 380px;
+    border-radius: 10px;
+    border-color: blue;
+    padding: 10px;
+}
+textarea{
+    width: 380px;
+    border-radius: 10px;
+    border-color: blue;
+    padding: 10px;
+}
+#post_form_content{
+    display: inline-block;
+    align-content: center;
+    margin: 5px;
+}
+#post_form_image{
+    display: inline-block;
+    align-content: center;
+    margin: 5px;
+}
+input[type="file"] {
+    display: block;
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#post_form_Send{
+    display: inline-block;
+    align-content: center;
+    margin-top: 15px;
+    background-color: blue;
+    color: white;
+    border-radius: 10px;
+    border-color: blue;
+    padding: 5px;
+    margin-bottom: 150px;
+}
+
+#post_form_Send:hover{
+    display: inline-block;
+    align-content: center;
+    margin-top: 15px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    border-color: black;
+    padding: 5px;
+}
