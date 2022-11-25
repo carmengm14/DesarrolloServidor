@@ -49,11 +49,12 @@ class BlogController extends AbstractController
                 'form' => $form->createView()    
             ));
         }
-        return $this->render('blog/new_post.html.twig', array(
+        return $this->redirectToRoute('single_post', ["slug" => $post->getSlug()]);
+        /*return $this->render('blog/new_post.html.twig', array(
             'form' => $form->createView()    
-        ));
+        ));*/
     }
-/*
+
     //CONTROLADOR SINGLE POST CON IDENTIFICADOR
     #[Route('/single_post/{slug}', name: 'single_post')]
     public function post(ManagerRegistry $doctrine, $slug): Response
@@ -65,8 +66,30 @@ class BlogController extends AbstractController
         ]);
         return $this->redirectToRoute('single_post', ["slug" => $post->getSlug()]);
     }
-    */
 
+    //CONTROLADOR DE LISTAR PAGINAS Y FUNCION DE ORDENAR DESCENDENTE
+    /**
+    * Returns an array of Post objects
+    */
+    public function findAll()
+    {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.publishedAt', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    #[Route('/blog/{page}', name: 'blog', requirements: ['page' => '\d+'])]
+    public function index(ManagerRegistry $doctrine, int $page = 1): Response
+    {
+        $repository = $doctrine->getRepository(Post::class);
+        $posts = $repository->findAll($page);
+
+        return $this->render('blog/blog.html.twig', [
+            'posts' => $posts,
+        ]);
+    }
 
 
 }
