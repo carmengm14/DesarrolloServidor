@@ -67,18 +67,6 @@ class BlogController extends AbstractController
         return $this->redirectToRoute('single_post', ["slug" => $post->getSlug()]);
     }
 
-    //CONTROLADOR DE LISTAR PAGINAS Y FUNCION DE ORDENAR DESCENDENTE
-    /**
-    * Returns an array of Post objects
-    */
-    public function findAll()
-    {
-        return $this->createQueryBuilder('p')
-            ->orderBy('p.publishedAt', 'DESC')
-            ->getQuery()
-            ->getResult()
-        ;
-    }
 
     #[Route('/blog/{page}', name: 'blog', requirements: ['page' => '\d+'])]
     public function index(ManagerRegistry $doctrine, int $page = 1): Response
