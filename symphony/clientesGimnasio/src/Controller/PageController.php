@@ -15,4 +15,12 @@ class PageController extends AbstractController
     {
         return $this -> render('inicio.html.twig');
     }
+
+    /**
+     * @Route("/novedades", name = "novedades")
+     */
+    public function novedades(): Response
+    {
+        return $this -> render('novedades.html.twig');
+    }
 }
