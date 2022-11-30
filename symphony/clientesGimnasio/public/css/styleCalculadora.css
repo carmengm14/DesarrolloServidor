@@ -1,0 +1,179 @@
+/*EXPLICACION CALCULADORA*/
+.explicacion{
+    text-align: justify;
+    margin-right: 150px;
+    margin-left: 150px;
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+  
+  .calculadora{
+    margin-right: 150px;
+    margin-left: 150px;
+    align-items:center;
+    text-align: center;
+  }
+  .preguntas{
+      background-color: #ff9a00;
+      border-radius: 25px;
+  }
+  .datos{
+      background-color: rgba(255, 255, 255,0.3);
+      border-radius: 10px;
+      padding: 10px;
+      margin-left: 30px;
+      margin-right: 30px;
+      padding-bottom:20px ;
+      display:inline-block;
+  }
+  .escritura {
+      margin: 20px;
+      padding: 10px;
+      width: 100px;
+      border-radius: 15px;
+  }
+  .actividad{
+      background-color: white;
+      border-radius: 10px;
+      width: 500px;
+      align-items: justify;
+      align-content: justify;
+      margin: 10px;
+      padding: 20px;
+      display:inline-flex;
+  }
+  .actividad:hover{
+    background-color: rgb(217, 207, 207);
+    border-radius: 10px;
+    width: 500px;
+    align-items: right;
+    align-content: justify;
+    margin: 10px;
+    padding: 20px;
+    display:inline-flex;
+}
+.escrituramacro{
+    align-items: justify;
+    align-content: justify;
+    margin: 20px;
+      padding: 10px;
+      width: 100px;
+      border-radius: 15px;
+}
+  .selector{
+      border-color: #3b3b88;
+      border-width: 2px;
+      align-items:flex-end;
+      display:flex;
+      align-content: flex-end;
+    }
+    .selector:checked{
+        background-color: #3b3b88;
+        transform: scale(1);
+        border-width: 2px;
+        align-items:flex-end;
+        display:flex;
+        align-content: flex-end;
+    }
+  .botones{
+      background-color: #3b3b88;
+      color:white;
+      border-color: #3b3b88;
+      border-radius: 15px;
+      width: 250px;
+      text-align: center;
+  }
+  .botones:hover{
+    background-color: #222;
+    color:white;
+    border-color: #222;
+    border-radius: 15px;
+    width: 300px;
+    cursor: pointer;
+}
+.botonOculto{
+    display:none;
+}
+
+@media (max-width:1080px){
+    .actividad{
+        background-color: white;
+        border-radius: 10px;
+        max-width: 450px;
+        align-items: justify;
+        align-content: justify;
+        margin: 10px;
+        margin-right: 20px;
+        padding: 20px;
+        display:inline-flex;
+    }
+    .actividad:hover{
+      background-color: rgb(217, 207, 207);
+      border-radius: 10px;
+      max-width: 450px;
+      align-items: justify;
+      align-content: justify;
+      margin: 10px;
+      padding: 20px;
+      display:inline-flex;
+  }
+}
+  @media (max-width:768px){
+    .calculadora{
+        margin-right: 20px;
+        margin-left: 20px;
+        align-items:center;
+        text-align: center;
+      }
+    .explicacion{
+      text-align: justify;
+      margin-right: 20px;
+      margin-left: 20px;
+      margin-bottom: 10px;
+      padding: 10px;
+    } 
+    
+    #peso , #edad, #altura{
+        margin: 20px;
+        padding: 10px;
+        width: 200px;
+        border-radius: 15px;
+    }
+
+    .actividad{
+        background-color: white;
+        border-radius: 10px;
+        max-width: 200px;
+        align-items: justify;
+        align-content: justify;
+        margin: 10px;
+        margin-right: 20px;
+        padding: 20px;
+        display:inline-flex;
+    }
+    .actividad:hover{
+      background-color: rgb(217, 207, 207);
+      border-radius: 10px;
+      max-width: 200px;
+      align-items: justify;
+      align-content: justify;
+      margin: 10px;
+      padding: 20px;
+      display:inline-flex;
+  }
+  .botones{
+    background-color: #3b3b88;
+    color:white;
+    border-color: #3b3b88;
+    border-radius: 15px;
+    width: 250px;
+}
+.botones:hover{
+  background-color: #222;
+  color:white;
+  border-color: #222;
+  border-radius: 15px;
+  width: 100px;
+  cursor: pointer;
+}
+  }

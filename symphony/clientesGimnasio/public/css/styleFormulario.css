@@ -1,0 +1,59 @@
+.formulario1{
+    text-align: center;
+    background-color: #ff9a00;
+    border-radius: 10px;
+    padding: 10px;
+    width: 80%;
+    margin: 100px;
+    padding: 15px;
+  }
+  span{
+      color: #3b3b88; 
+  }
+  input{
+    height: 20px;
+    width: 250px;
+    align-items:stretch;
+    border-radius: 10px;
+    border-color: #ff9a00;
+  }
+  input:hover{
+    height: 20px;
+    width: 250px;
+    align-items:stretch;
+    border-radius: 10px;
+    background-color: #222;
+    color: white;
+    border-color: #ff9a00;
+  }
+  textarea{
+    width: 250px;
+    border-radius: 10px;
+  }
+  textarea:hover{
+    border-radius: 10px;
+    width: 250px;
+    background-color: #222;
+    color: white;
+  }
+  .botonEnviar{
+    background-color: #3b3b88;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+  }
+  .botonEnviar:hover{
+    background-color: #222;
+    margin: 10px;
+    padding: 20px 10px;
+    border-radius: 10px;
+    color: #ff9a00;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    cursor: pointer;
+  }

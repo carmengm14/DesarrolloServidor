@@ -1,0 +1,98 @@
+caption {
+    padding: 20px;
+    font-size: 28px;
+    color: #3b3b88;
+  }
+  th {
+    background-color: #3b3b88;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  td {
+    background-color: #3b3b88;
+    color: white;
+    padding: 8px;
+    text-align: center;
+    border-radius: 5px;
+
+  }
+  table{
+      align-content: center;
+      text-align: center;
+      position: center;
+      margin: 20px;
+      border: 2px black solid;
+      border-spacing: 10px;
+      border-radius: 35px;
+      box-shadow: 0 5px 10px #000;
+
+  }
+
+  /*CLASES*/
+.gap{
+    background-color: #0a8989;
+    color: white;
+}
+.zumba{
+    background-color: #0016c0;
+    color: white;
+}
+.pilates{
+    background-color: #ffa51b;
+    color: black;
+}
+.body-pump{
+    background-color: #dab67f;
+    color: black;
+}
+.baile{
+    background-color: #4c8383;
+    color: white;
+}
+.spinning{
+    background-color: #ab6106;
+    color: white;
+}
+.crossfit{
+    background-color: #be2b21;
+    color: white;
+}
+.boxeo{
+    background-color: #b1860d;
+    color: black;
+}
+.yoga{
+    background-color: #3d296a;
+    color: white;
+}
+.aerobic{
+    background-color: #18553e;
+    color: white;
+}
+.body-combat{
+    background-color: #92270c;
+    color: white;
+}
+
+/*PISCINA*/
+.libre{
+    background-color: #92270c;
+    color: white;
+}
+.aqua-gym{
+    background-color: #4c8383;
+    color: white;
+}
+.rehabilitacion{
+    background-color: #b1860d;
+    color: black;
+}
+.piscina-adultos{
+    background-color: #ab6106;
+    color: white;
+}
+.piscina-ninyos{
+    background-color: #0a8989;
+    color: white;
+}

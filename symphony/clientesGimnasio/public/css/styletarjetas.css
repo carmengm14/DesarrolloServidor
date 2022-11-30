@@ -1,0 +1,107 @@
+.tarifas-title{
+    color: #3b3b88;
+    text-align: center;
+}
+
+.card {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    margin: 20px;
+    display: inline-block;
+}
+
+.card .card_landing {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 5px 10px #000;
+    background: linear-gradient(transparent 80%, #000), var(--i);
+    background-position: center;
+    background-size: cover;
+    z-index: 100;
+}
+
+.card .card_landing h6 {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 25px;
+    color: #fff;
+}
+
+.card .card_info {
+    position: cover;
+    width: 90%;
+    height: 90%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    margin: auto;
+    padding: 15px;
+    background: #3b3b88;
+    color: #ffffff;
+    box-shadow: 0 5px 10px #000;
+    transition: opacity .2s ease 1s;
+}
+
+.card:hover .card_info {
+    margin-top: 10%;
+    opacity: .6s;
+}
+
+.card_info .head {
+    padding: 5px 0;
+    border-bottom: solid 1px #ff9a00;
+}
+
+.card_info .head .title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ff9a00;
+}
+
+.card_info .head .description {
+    display: flex;
+    gap: 10px;
+}
+
+.card_info .head .description .item {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.card_info .head .description .item i {
+    color: #ff9a00;
+    font-size: 15px;
+}
+
+.card_info .head .description .item p {
+    font-size: 13px;
+}
+
+.card_info .content {
+    margin-top: 15px;
+}
+
+.card_info .content .list {
+    padding: 10px 15px;
+}
+
+.card_info .content .list li {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.card_info .action .btn {
+    padding: 10px;
+    color: #fff;
+    width: 100%;
+    text-decoration: none;
+    text-align: center;
+    background: #ff9a00;
+    display: block;
+    margin-top: 10px;
+}
