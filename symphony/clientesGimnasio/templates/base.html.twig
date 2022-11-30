@@ -18,6 +18,8 @@
         {% endblock %}
     </head>
     <body>
+        {{ include ('partials/_barra_nav.html.twig')}}
         {% block body %}{% endblock %}
+        {{ include ('partials/_footer.html.twig')}}
     </body>
 </html>

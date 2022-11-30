@@ -1,8 +1,168 @@
 {% extends 'base.html.twig' %}
 {#}ESTA PAGINA SE VERÁ EN LA RUTA / DE LA WEB{#}
-{% block title %}Clientes{% endblock %}
+{% block stylesheets %}
+             <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+             <link href="{{ asset('css/styletarjetas.css') }}" rel="stylesheet" />
+        {% endblock %}
+
+        {% block javascripts %}
+            <script src="{{ asset('js/scripts.js') }}" type="text/javascript"></script>
+        {% endblock %}
+{% block title %}GYM Y JAM{% endblock %}
 {% block body %} 
-    <h1>Clientes </h1>
-    <h2>Bienvenido a la web de clientes del gimnasio.</h2>
-    <p>Página de inicio</p>
+    <noscript>
+        NECESITAS ACTIVAR JAVASCRIPT EN TU NAVEGADOR PARA PODER VISUALIZAR CORRECTAMENTE ESTA PÁGINA WEB EN TU DISPOSITIVO
+    </noscript>
+    <!-- SLIDER-->
+    <div class="slider">
+       <ul>
+            <li>
+                <img src="{{ asset('img/SLIDER1 (1).jpg') }}" alt="">
+            </li>
+            <li>
+                <img src="{{ asset('img/SLIDER1 (2).jpg') }}" alt="">
+            </li>
+            <li>
+                <img src="{{ asset('img/SLIDER1 (3).jpg') }}" alt="">
+            </li>
+            <li>
+                <img src="{{ asset('img/SLIDER1 (4).jpg') }}" alt="">
+            </li>
+        </ul>
+    </div>
+
+   
+  
+    <!--TARJETAS DE TARIFA-->
+
+    <p class="tarjetas"><center>
+        <h1 class="tarifas-title">TARIFAS</h1><br>
+        <!--PRIMERA TARIFA-->
+        <div class="card">
+            <div class="card_landing" style="background-image: url({{ asset('img/tarifa12niños.jpg') }});">
+                <h6>TARIFA NIÑOS</h6>
+            </div>
+            <div class="card_info">
+                <div class="head">
+                    <p class="title">NIÑOS (0-14 AÑOS)</p>
+                </div>
+                
+    
+                <div class="content">
+                    <p class="title">CARACTERÍSTICAS:</p>
+                    <ul class="list">
+                        <li>12€ al mes</li>
+                        <li>SIN MATRÍCULA</li>
+                        <li>ACCESO TOTAL A LAS INSTALACIONES</li>
+                        <li>SIN RESTRICCIÓN HORARIA</li>
+                    </ul>
+                </div>
+                <div class="action">
+                    <a href="../html/tarifas.html" class="btn">ADQUIRIR TARIFA</a>
+                </div>
+            </div>
+        </div>
+         <!--SEGUNDA TARIFA-->
+    
+         <div class="card">
+            <div class="card_landing" style="background-image: url({{ asset('img/tarifa19jovenes.jpg') }});">
+                <h6>TARIFA JOVENES</h6>
+            </div>
+            <div class="card_info">
+                <div class="head">
+                    <p class="title">JOVENES (15-30 AÑOS)</p>
+                </div>
+                
+    
+                <div class="content">
+                    <p class="title">CARACTERÍSTICAS:</p>
+                    <ul class="list">
+                        <li>12€ al mes</li>
+                        <li>SIN MATRÍCULA</li>
+                        <li>ACCESO TOTAL A LAS INSTALACIONES</li>
+                        <li>SIN RESTRICCIÓN HORARIA</li>
+                    </ul>
+                </div>
+                <div class="action">
+                    <a href="../html/tarifas.html" class="btn">ADQUIRIR TARIFA</a>
+                </div>
+            </div>
+        </div>
+        
+            <!--TERCERA TARIFA-->
+            <div class="card">
+                <div class="card_landing" style="background-image: url({{ asset('img/tarifa15juvilados.jpg') }});">
+                    <h6>TARIFA JUBILADOS</h6>
+                </div>
+                <div class="card_info">
+                    <div class="head">
+                        <p class="title">JUBILADOS</p>
+                    </div>
+                    
+        
+                    <div class="content">
+                        <p class="title">CARACTERÍSTICAS:</p>
+                        <ul class="list">
+                            <li>12€ al mes</li>
+                            <li>SIN MATRÍCULA</li>
+                            <li>ACCESO TOTAL A LAS INSTALACIONES</li>
+                            <li>SIN RESTRICCIÓN HORARIA</li>
+                        </ul>
+                    </div>
+                    <div class="action">
+                        <a href="../html/tarifas.html" class="btn">ADQUIRIR TARIFA</a>
+                    </div>
+                </div>
+            </div>
+             <!--CUARTA TARIFA-->
+        
+             <div class="card">
+                <div class="card_landing" style="background-image: url({{ asset('img/tarifa15discapacitados.jpg') }});">
+                    <h6>TARIFA DISCAPACIDAD</h6>
+                </div>
+                <div class="card_info">
+                    <div class="head">
+                        <p class="title">DISCAPACIDAD (&lt; 30%)</p>
+                    </div>
+                    
+        
+                    <div class="content">
+                        <p class="title">CARACTERÍSTICAS:</p>
+                        <ul class="list">
+                            <li>12€ al mes</li>
+                            <li>SIN MATRÍCULA</li>
+                            <li>ACCESO TOTAL A LAS INSTALACIONES</li>
+                            <li>SIN RESTRICCIÓN HORARIA</li>
+                        </ul>
+                    </div>
+                    <div class="action">
+                        <a href="../html/tarifas.html" class="btn">ADQUIRIR TARIFA</a>
+                    </div>
+                </div>
+            </div>
+            </center></p>
+            <div class="separadorbajo"></div>
+
+           <!--ACORDEON DE PREGUNTAS-->
+
+           <div class="acordeon">
+            <br><br>
+           <h1 class="tarifas-title">PREGUNTAS FRECUENTES</h1><br><br>
+
+           <div class="accordion">
+                <input type="radio" name="toggle" class="accordion-toggle" checked />
+                    <div class="accordion-header">Panel 1</div>
+                        <div class="accordion-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias sed beatae provident, exercitationem voluptas ab repudiandae culpa consectetur laudantium odit sapiente non, eius optio. Expedita deserunt ullam mollitia totam perferendis.</div>
+                
+                <input type="radio" name="toggle" class="accordion-toggle" />
+                    <div class="accordion-header">Panel 2</div>
+                        <div class="accordion-content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas odit hic dolorem, officia explicabo fuga repellat quam corporis provident ducimus quisquam maxime quae blanditiis eveniet, culpa eaque qui alias harum?</div>
+                
+                <input type="radio" name="toggle" class="accordion-toggle" />
+                    <div class="accordion-header">Panel 3</div>
+                        <div class="accordion-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab voluptatibus aut debitis quae harum, quisquam sequi autem commodi? Officia voluptates blanditiis earum maxime ut ab dolores tenetur tempore facilis odit!</div>
+            </div>
+            <br><br>
+            </div>
+
 {% endblock %}

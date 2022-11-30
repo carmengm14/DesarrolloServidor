@@ -1,0 +1,20 @@
+ <!-- CABECERA DE BARRA DE NAVEGACIÓN RESPONSIBA-->
+    <header class="header">
+        <div class="logo-header">
+            <a href="{{path('inicio') }}"><img src="{{ asset('img/logo32x32.svg') }}" alt=""></a>
+        </div>
+        <div class="nav-menu">
+            <input type="checkbox" id="check">    
+            <label for="check" class="checkbtn">
+                <i class="menu-icon"><img src="{{ asset('img/hamburguesa.svg') }}" alt=""></i>
+            </label>
+            <ul>
+                <li>
+                <a href="{{path('inicio') }}">INICIO</a></li>
+                <li><a href="novedades.html">NOVEDADES</a></li>
+                <li><a href="clases.html">CLASES</a></li>
+                <li><a href="calculadora.html">CALCULADORA</a></li>
+                <li><a href="contacto.html">CONTACTO</a></li>
+            </ul>
+        </div>
+    </header>
