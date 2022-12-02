@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+             <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+             <link href="{{ asset('css/styleclases.css') }}" rel="stylesheet" />
+        {% endblock %}
+
+        {% block javascripts %}
+            <script src="{{ asset('js/scripts.js') }}" type="text/javascript"></script>
+        {% endblock %}
+
+{% block title %}INICIAR SESION{% endblock %}
+
+{% block body %}
+<!-- Principal Content Start -->
+<div id="login">
+    <div class="container">
+        <form method="post" class='form-horizontal'>
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            {% if app.user %}
+                <div class="mb-3">
+                    Has iniciado sesión como {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                </div>
+            {% endif %}
+            <center>
+            <h1 class="h3 mb-3 font-weight-normal">INICIO DE SESIÓN</h1>
+            <label for="inputEmail" style="text-align: justify; padding-right: 70px;">EMAIL: </label>
+            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+            <br><br>
+            <label for="inputPassword" style="text-align: justify; padding-right: 10px;">CONTRASEÑA: </label>
+            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+            <input type="hidden" name="_csrf_token"
+                value="{{ csrf_token('authenticate') }}"
+            >
+                <br><br>
+            <button class="pull-right btn btn-lg sr-button" style="background-color: #ff9a00; color: white; padding: 5px; border-radius: 8px; cursor:pointer; border-color: #ff9a00;" type="submit">
+                INICIAR SESIÓN
+            </button>
+                <br><br>
+            </center>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
