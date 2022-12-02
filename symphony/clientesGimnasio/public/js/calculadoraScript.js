@@ -10,7 +10,7 @@ window.onload = function () {
 
     
     var parrafo = document.createElement("p");
-    var texto = document.createTextNode("GRACIAS " + nombre + " POR USAR LA CALCULADORA DE GYM Y JAM\n");
+    var texto = document.createTextNode("GRACIAS " + nombre + " POR USAR LA CALCULADORA DE GYM Y JAM" + "\n\n");
     parrafo.appendChild(texto);
     if (nombre != "") {
         document.getElementById('calculadora').appendChild(parrafo);

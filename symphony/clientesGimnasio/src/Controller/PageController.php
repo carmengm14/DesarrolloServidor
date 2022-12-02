@@ -23,4 +23,29 @@ class PageController extends AbstractController
     {
         return $this -> render('novedades.html.twig');
     }
+
+    /**
+     * @Route("/clases", name = "clases")
+     */
+    public function clases(): Response
+    {
+        return $this -> render('clases.html.twig');
+    }
+
+    /**
+     * @Route("/calculadora", name = "calculadora")
+     */
+    public function calculadora(): Response
+    {
+        return $this -> render('calculadora.html.twig');
+    }
+
+    /**
+     * @Route("/sesion", name = "sesion")
+     */
+    public function sesion(): Response
+    {
+        return $this -> render('sesion.html.twig');
+    }
 }
+

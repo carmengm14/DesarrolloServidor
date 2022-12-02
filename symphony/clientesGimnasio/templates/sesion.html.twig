@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{#}ESTA PAGINA SE VERÁ EN LA RUTA / DE LA WEB{#}
+{% block stylesheets %}
+             <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+        {% endblock %}
+
+        {% block javascripts %}
+            <script src="{{ asset('js/scripts.js') }}" type="text/javascript"></script>
+        {% endblock %}
+{% block title %}GYM Y JAM{% endblock %}
+{% block body %} 
+<br>
+<h1>BIENVENIDO AL AREA DE SOCIOS</h1>
+<center>
+
+    <table>
+        <tr>
+          <th>REGISTRARSE </th>
+          <th>INICIAR SESION </th>
+        </tr>
+        <tr>
+            <td>Página de registro </td>
+            <td>Página de inicio </td>
+        </tr>
+    </table>
+        
+  
+{% endblock %}

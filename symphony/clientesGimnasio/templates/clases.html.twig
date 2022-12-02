@@ -1,0 +1,275 @@
+{% extends 'base.html.twig' %}
+{#}ESTA PAGINA SE VERÁ EN LA RUTA / DE LA WEB{#}
+{% block stylesheets %}
+             <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+             <link href="{{ asset('css/styleclases.css') }}" rel="stylesheet" />
+        {% endblock %}
+
+        {% block javascripts %}
+            <script src="{{ asset('js/scripts.js') }}" type="text/javascript"></script>
+        {% endblock %}
+{% block title %}GYM Y JAM{% endblock %}
+{% block body %} 
+
+<center>
+
+    <table>
+        <thead>
+          <caption>
+            - HORARIO DE CLASES -
+            <center><hr></center>
+          </caption>
+          <th>HORA</th>
+          <th>LUNES</th>
+          <th>MARTES</th>
+          <th>MIERCOLES</th>
+          <th>JUEVES</th>
+          <th>VIERNES</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>7:10 - 8:00</td>
+            <td class="gap">GAP</td>
+            <td class="spinning">SPINNING</td>
+            <td class="spinning">SPINNING</td>
+            <td class="body-combat">BODY COMBAT</td>
+            <td class="body-combat">BODY COMBAT</td>
+          </tr>
+          <tr>
+            <td>8:00 - 8:50</td>
+            <td class="zumba">ZUMBA</td>
+            <td class="zumba">ZUMBA</td>
+            <td class="boxeo">BOXEO</td>
+            <td class="boxeo">BOXEO</td>
+            <td class="crossfit">CROSSFIT</td>
+          </tr>
+          <tr>
+            <td>8:50 - 9:40</td>
+            <td class="pilates">PILATES</td>
+            <td class="pilates">PILATES</td>
+            <td class="yoga">YOGA</td>
+            <td class="spinning">SPINNING</td>
+            <td class="spinning">SPINNING</td>
+          </tr>
+          <tr>
+            <td>9:40 - 10:30</td>
+            <td class="body-pump">BODY-PUMP</td>
+            <td class="body-pump">BODY-PUMP</td>
+            <td class="baile">BAILE</td>
+            <td class="aerobic">AEROBIC</td>
+            <td class="gap">GAP</td>
+          </tr>
+          <tr>
+            <td>10:30 - 11:20</td>
+            <td class="baile">BAILE</td>
+            <td class="pilates">PILATES</td>
+            <td class="crossfit">CROSSFIT</td>
+            <td class="boxeo">BOXEO</td>
+            <td class="zumba">ZUMBA</td>
+          </tr>
+          <tr>
+            <td>11:20 - 12:10</td>
+            <td class="spinning">SPINNING</td>
+            <td class="spinning">SPINNING</td>
+            <td class="aerobic">AEROBIC</td>
+            <td class="baile">BAILE</td>
+            <td class="gap">GAP</td>
+          </tr>
+          <tr>
+            <td>12:10 - 1:00</td>
+            <td class="gap">GAP</td>
+            <td class="yoga">YOGA</td>
+            <td class="yoga">YOGA</td>
+            <td class="body-combat">BODY COMBAT</td>
+            <td class="body-combat">BODY COMBAT</td>
+          </tr>
+          <tr>
+            <td>1:00 - 1:50</td>
+            <td class="crossfit">CROSSFIT</td>
+            <td class="baile">BAILE</td>
+            <td class="pilates">PILATES</td>
+            <td class="yoga">YOGA</td>
+            <td class="body-pump">BODY-PUMP</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="6">📢 LAS CLASES NO SE REALIZAN LOS FINDES DE SEMANA NI POR LA TARDE 📢</td>
+          </tr>
+        </tfoot>
+      </table>
+        <!--FIN TABLA-->
+
+      <br>
+      <!--COMIENZO TABLA ACUÁTICA-->
+
+      <table>
+        <thead>
+          <caption>
+            - HORARIO DE PISCINA -
+            <center><hr></center>
+          </caption>
+          <th>HORA</th>
+          <th>LUNES</th>
+          <th>MARTES</th>
+          <th>MIERCOLES</th>
+          <th>JUEVES</th>
+          <th>VIERNES</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>7:10 - 8:00</td>
+            <td class="libre">LIBRE</td>
+            <td class="libre">LIBRE</td>
+            <td class="libre">LIBRE</td>
+            <td class="libre">LIBRE</td>
+            <td class="libre">LIBRE</td>
+          </tr>
+          <tr>
+            <td>8:00 - 8:50</td>
+            <td class="libre">LIBRE</td>
+            <td class="libre">LIBRE</td>
+            <td class="libre">LIBRE</td>
+            <td class="libre">LIBRE</td>
+            <td class="libre">LIBRE</td>
+          </tr>
+          <tr>
+            <td>8:50 - 9:40</td>
+            <td class="aqua-gym">AQUA-GYM</td>
+            <td class="aqua-gym">AQUA-GYM</td>
+            <td class="aqua-gym">AQUA-GYM</td>
+            <td class="aqua-gym">AQUA-GYM</td>
+            <td class="aqua-gym">AQUA-GYM</td>
+          </tr>
+          <tr>
+            <td>9:40 - 10:30</td>
+            <td class="rehabilitacion">REHABILITACIÓN</td>
+            <td class="rehabilitacion">REHABILITACIÓN</td>
+            <td class="rehabilitacion">REHABILITACIÓN</td>
+            <td class="rehabilitacion">REHABILITACIÓN</td>
+            <td class="rehabilitacion">REHABILITACIÓN</td>
+          </tr>
+          <tr>
+            <td>10:30 - 11:20</td>
+            <td class="aqua-gym">AQUA-GYM</td>
+            <td class="aqua-gym">AQUA-GYM</td>
+            <td class="aqua-gym">AQUA-GYM</td>
+            <td class="aqua-gym">AQUA-GYM</td>
+            <td class="aqua-gym">AQUA-GYM</td>
+          </tr>
+          <tr>
+            <td>11:20 - 12:10</td>
+            <td class="piscina-adultos">NATACIÓN ADULTOS</td>
+            <td class="piscina-adultos">NATACIÓN ADULTOS</td>
+            <td class="piscina-adultos">NATACIÓN ADULTOS</td>
+            <td class="piscina-adultos">NATACIÓN ADULTOS</td>
+            <td class="piscina-adultos">NATACIÓN ADULTOS</td>
+          </tr>
+          <tr>
+            <td>12:10 - 1:00</td>
+            <td class="piscina-adultos">NATACIÓN ADULTOS</td>
+            <td class="libre">LIBRE</td>
+            <td class="piscina-adultos">NATACIÓN ADULTOS</td>
+            <td class="libre">LIBRE</td>
+            <td class="piscina-adultos">NATACIÓN ADULTOS</td>
+          </tr>
+          <tr>
+            <td>1:00 - 1:50</td>
+            <td class="libre">LIBRE</td>
+            <td class="libre">LIBRE</td>
+            <td class="libre">LIBRE</td>
+            <td class="libre">LIBRE</td>
+            <td class="libre">LIBRE</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="6">📢 LAS CLASES NO SE REALIZAN LOS FINDES DE SEMANA 📢</td>
+          </tr>
+        </tfoot>
+      </table>
+       <!--FIN TABLA-->
+
+       <br>
+       <!--COMIENZO TABLA ACUÁTICA-->
+ 
+       <table>
+         <thead>
+           <caption>
+             - HORARIO DE CLASES NIÑOS PISCINA -
+             <center><hr></center>
+           </caption>
+           <th>HORA</th>
+           <th>LUNES</th>
+           <th>MARTES</th>
+           <th>MIERCOLES</th>
+           <th>JUEVES</th>
+           <th>VIERNES</th>
+         </thead>
+         <tbody>
+           <tr>
+             <td>16:30-17:30</td>
+             <td class="piscina-ninyos">NATACIÓN NIÑOS</td>
+             <td class="piscina-ninyos">NATACIÓN NIÑOS</td>
+             <td class="piscina-ninyos">NATACIÓN NIÑOS</td>
+             <td class="piscina-ninyos">NATACIÓN NIÑOS</td>
+             <td class="piscina-ninyos">NATACIÓN NIÑOS</td>
+           </tr>
+           <tr>
+             <td>17:30 - 18:30</td>
+             <td class="piscina-ninyos">NATACIÓN NIÑOS</td>
+             <td class="aqua-gym">AQUA-GYM</td>
+             <td class="piscina-ninyos">NATACIÓN NIÑOS</td>
+             <td class="piscina-ninyos">NATACIÓN NIÑOS</td>
+             <td class="aqua-gym">AQUA-GYM</td>
+           </tr>
+           <tr>
+             <td>18:30 - 19:30</td>
+             <td class="libre">LIBRE</td>
+             <td class="libre">LIBRE</td>
+             <td class="libre">LIBRE</td>
+             <td class="libre">LIBRE</td>
+             <td class="libre">LIBRE</td>
+            </tr>
+           <tr>
+             <td>19:30 - 20:30</td>
+             <td class="piscina-adultos">NATACIÓN ADULTOS</td>
+             <td class="piscina-adultos">NATACIÓN ADULTOS</td>
+             <td class="piscina-adultos">NATACIÓN ADULTOS</td>
+             <td class="piscina-adultos">NATACIÓN ADULTOS</td>
+             <td class="piscina-adultos">NATACIÓN ADULTOS</td>
+            </tr>
+           <tr>
+             <td>20:30 - 21:20</td>
+             <td class="piscina-adultos">NATACIÓN ADULTOS</td>
+             <td class="aqua-gym">AQUA-GYM</td>
+             <td class="piscina-adultos">NATACIÓN ADULTOS</td>
+             <td class="aqua-gym">AQUA-GYM</td>
+             <td class="piscina-adultos">NATACIÓN ADULTOS</td>
+            </tr>
+           <tr>
+             <td>21:20 - 22:20</td>
+             <td class="piscina-adultos">NATACIÓN ADULTOS</td>
+             <td class="libre">LIBRE</td>
+             <td class="piscina-adultos">NATACIÓN ADULTOS</td>
+             <td class="libre">LIBRE</td>
+             <td class="piscina-adultos">NATACIÓN ADULTOS</td>
+           </tr>
+           <tr>
+             <td>22:10 - 23:00</td>
+             <td class="piscina-adultos">NATACIÓN ADULTOS</td>
+             <td class="libre">LIBRE</td>
+             <td class="piscina-adultos">NATACIÓN ADULTOS</td>
+             <td class="libre">LIBRE</td>
+             <td class="piscina-adultos">NATACIÓN ADULTOS</td>
+           </tr>
+         </tbody>
+         <tfoot>
+           <tr>
+             <td colspan="6">📢 LAS CLASES NO SE REALIZAN LOS FINDES DE SEMANA 📢</td>
+           </tr>
+         </tfoot>
+       </table>
+    </center>
+  
+{% endblock %}

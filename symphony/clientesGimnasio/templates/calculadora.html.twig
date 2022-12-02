@@ -1,0 +1,127 @@
+{% extends 'base.html.twig' %}
+{#}ESTA PAGINA SE VERÁ EN LA RUTA / DE LA WEB{#}
+{% block stylesheets %}
+             <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+             <link href="{{ asset('css/styleCalculadora.css') }}" rel="stylesheet" />
+        {% endblock %}
+
+        {% block javascripts %}
+            <script src="{{ asset('js/calculadoraScript.js') }}" type="text/javascript"></script>
+        {% endblock %}
+{% block title %}GYM Y JAM{% endblock %}
+{% block body %} 
+<h1>- CALCULADORA DE MACROS -</h1>
+    <center><hr></center>
+    <h3>¿QUÉ SÓN LOS MACROS?</h3>
+    <div class="explicacion">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo excepturi natus voluptatibus similique, debitis quae commodi est consequuntur maiores. Labore placeat sint aspernatur harum sunt. Perspiciatis placeat perferendis quia aut! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, nesciunt. Totam, assumenda ea? Ipsam iusto, maxime ratione illum quas modi nesciunt accusamus illo fugiat voluptatem voluptas, rerum, sed architecto tempora? Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto quas cum molestias dignissimos. Tempore id beatae voluptate aliquam esse, suscipit consequatur dolore, aut nulla laboriosam cumque quia accusamus, quis quo.</p>
+    </div>
+    <div class="calculadora" id="calculadora">
+        <div class="preguntas">
+                <form method="POST">
+                    <h3>DATOS IMPORTANTES</h3>
+                    <p class="datos">
+                    <label for="peso">PESO: </label>
+                    <input class="escritura" type="text" name="peso" value="0" id="peso" />
+                      
+                    <label for="edad">EDAD:</label>
+                    <input class="escritura" type="text" name="edad" value="0" id="edad" />
+
+                    <label for="altura">ALTURA:</label>
+                    <input class="escritura" type="text" name="altura" value="0" id="altura" />
+                    <br><br>
+
+                    <input class="botones" type="button" value="GUARDAR DATOS" onclick="operacion(peso.value,edad.value ,altura.value)">
+
+                    </p>
+                   
+                    <br><br>
+                    <p>TUS KCAL BASALES SON:</p>
+                    <p><input class="escritura" type="text" id="basal" name="basal"> kcal / día</p>
+
+                    <br><br><center><hr></center>
+
+                    <h3>- ACTIVIDAD FÍSICA -</h3>
+                    <div class="datos">
+                    <p class="actividad">
+                        ACTIVIDAD NADA / POCA (0-1 x semana)
+                        <input class="selector" type="radio" name="act" id="act-poco" >
+                    </p>
+                    <p class="actividad">
+                        ACTIVIDAD LIGERA (1-2 x semana)
+                        <input class="selector" type="radio" name="act" id="act-ligero" >
+                    </p>
+                    <p class="actividad">
+                        ACTIVIDAD MODERADA (3-5 x semana)
+                        <input class="selector" type="radio" name="act" id="act-moderada" >
+                    </p>
+                    <p class="actividad">
+                        ACTIVIDAD INTENSA (6-7 x semana)
+                        <input class="selector" type="radio" name="act" id="act-intensa" >
+                    </p>
+                    <br><br>
+                    <input class="botones" type="button" value="GUARDAR DATOS" onclick="calcular(peso.value,edad.value ,altura.value)">
+                    <input class="botonOculto" type="text" value="BORRAR SELECCIÓN" onclick="borrarSeleccion()">
+
+                    <br>
+                </div>
+                    <br><br>
+                    <p>TUS KCAL TOTALES A CONSUMIR SON:</p>
+                    <p><input class="escritura" type="text" id="total" name="total"> kcal totales / día</p>
+
+                    <br>
+                </form>
+                <center><hr></center>
+
+                <div class="cajitas">
+                <h3>- TUS MACRONUTIENTES -</h3>
+                
+                    <br><center>
+                    <input class="botones" type="button" value="CALCULAR" onclick="macros()">
+                    <br><br>
+                    <div class="datos">
+                    <div class="cajita"><p>
+                        <h4 class="titulo">PROTEÍNAS</h4>
+                        <input class="escrituramacro"class="escritura" type="text" id="proteinas" name="proteinas"> kcal totales x día</p>
+                    </div>
+                    <div class="cajita"><p>
+                        <h4 class="titulo">CARBOHIDRATOS</h4>
+                        <input class="escrituramacro" class="escritura" type="text" id="carbohidratos" name="carbohidratos"> kcal totales x día</p>
+                    </div>
+                    <div class="cajita"><p>
+                        <h4 class="titulo">GRASAS</h4>
+                        <input class="escrituramacro"class="escritura" type="text" id="grasas" name="grasas"> kcal totales x día</p>
+                    </div>
+                    </div>
+                    </center>
+                </div>
+
+                <h3>- EJEMPLOS DE KCAL POR DIETA -</h3>
+                <div class="dietas">
+                    <br>
+                    <input class="botones" type="button" value=" VER KCAL POR DIETAS" onclick="dietas()">
+
+                    <br><br>
+                    <div class="datos">
+                    <div class="dieta">
+                        <h4 class="titulo">DEFINICIÓN</h4>
+                        <p><input class="escritura" type="text" id="definicion" name="definicion"> kcal totales / día</p>
+                    </div>
+                    <div class="dieta">
+                        <h4 class="titulo">MANTENIMIENTO</h4>
+                        <p><input class="escritura" type="text" id="mantenimiento" name="mantenimiento"> kcal totales / día</p>
+                    </div>
+                    <div class="dieta">
+                        <h4 class="titulo">VOLUMEN</h4>
+                        <p><input class="escritura" type="text" id="volumen" name="volumen"> kcal totales / día</p>
+                    </div>
+                    </div>
+                </div>
+                <br>
+                </div>
+                
+            <br>
+            <br>
+    </div>
+
+{% endblock %}
